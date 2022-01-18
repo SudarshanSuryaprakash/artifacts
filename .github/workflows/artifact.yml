@@ -1,0 +1,15 @@
+name: Check Artifact
+
+on: 
+  [push]
+  workflow_dispatch:
+  
+jobs:
+  job_1:
+    runs-on: ubuntu-latest
+    steps:
+    - name: download md artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: mdArtifact
+          path: temp.md
