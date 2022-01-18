@@ -7,8 +7,9 @@ jobs:
   job_1:
     runs-on: ubuntu-latest
     steps:
+    - run: touch temp.md && echo "hi" > temp.md
     - name: upload md artifact
       uses: actions/upload-artifact@v2
       with:
         name: mdArtifact
-        path: temp/temp.txt
+        path: temp.md
