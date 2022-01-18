@@ -7,8 +7,8 @@ jobs:
   job_1:
     runs-on: ubuntu-latest
     steps:
-    - name: download md artifact
+    - name: upload md artifact
       uses: actions/upload-artifact@v2
       with:
         name: mdArtifact
-        path: /test.md
+        path: temp/temp.txt
