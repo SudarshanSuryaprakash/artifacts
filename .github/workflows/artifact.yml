@@ -53,6 +53,8 @@ jobs:
           cd output
           echo "output>" && ls
           echo "output>" && pwd
+          git add .
+          git commit -m "add artifacts to output"
 #     - run: |
 #          mv /home/runner/work/artifacts/artifacts/output ./output
     - name: pull-request
