@@ -1,7 +1,8 @@
 name: Check Artifact
 
 on: 
-   [push]
+   push:
+      branches: [develop]
 
   
 jobs:
