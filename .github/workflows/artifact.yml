@@ -2,7 +2,7 @@ name: Check Artifact
 
 on: 
    push:
-      paths: 'README.md"
+      paths: 'README.md'
 
   
 jobs:
