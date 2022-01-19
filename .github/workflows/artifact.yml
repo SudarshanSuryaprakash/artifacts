@@ -1,15 +1,20 @@
 name: Check Artifact
 
 on: 
-  [push]
+   [push]
+
   
 jobs:
   job_1:
     runs-on: ubuntu-latest
     steps:
-    - run: touch temp.md && echo "hi" > temp.md
-    - name: upload md artifact
-      uses: actions/upload-artifact@v2
-      with:
-        name: mdArtifact
-        path: temp.md
+#     - run: touch temp.md && echo "hi" > temp.md
+#     - name: upload md artifact
+#       uses: actions/upload-artifact@v2
+#       with:
+#         name: mdArtifact
+#         path: temp.md
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    - run: ls
+      
