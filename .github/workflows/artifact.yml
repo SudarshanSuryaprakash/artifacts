@@ -21,11 +21,11 @@ jobs:
          mkdir output
          for file in $(find . -name "*.md")
          do
-         cat $file >> ../output/resultData.md
-         echo -e "\n" >> ../output/resultData.md
+         cat $file >> output/resultData.md
+         echo -e "\n" >> output/resultData.md
          done
-         ls > ../output/result.md
-         cd ..
+         ls > output/result.md
+         
     - name: Convert Markdown To docx
       run: |
           pandoc -f markdown -t docx --number-sections --file-scope  output/result.md -o output/result.docx
