@@ -16,5 +16,13 @@ jobs:
 #         path: temp.md
     - name: Checkout repo
       uses: actions/checkout@v2
-    - run: touch temp && ls
+    - run: 
+         | 
+         cd mdFiles
+         ls > ../result.md
+    - name: Upload md artifact
+      uses: actions/upload-artifact@v2
+      with:
+         name: mdArtifact
+         path: results.md
       
