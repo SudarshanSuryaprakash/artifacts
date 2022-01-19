@@ -58,6 +58,9 @@ jobs:
           git add .
           git commit -m "add artifacts to output"
           git push
+    - uses: geekyeggo/delete-artifact@v1
+      with:
+         name: output
 #     - run: |
 #          mv /home/runner/work/artifacts/artifacts/output ./output
     - name: pull-request
