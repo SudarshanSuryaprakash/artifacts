@@ -57,6 +57,7 @@ jobs:
           git config --global user.name "Sudarshan Suryaprakash"
           git add .
           git commit -m "add artifacts to output"
+          git push
 #     - run: |
 #          mv /home/runner/work/artifacts/artifacts/output ./output
     - name: pull-request
