@@ -2,7 +2,7 @@ name: Check Artifact
 
 on: 
    push:
-      branches: [develop]
+      paths: 'README.md"
 
   
 jobs:
@@ -16,12 +16,11 @@ jobs:
       uses: actions/checkout@v2
     - run: 
          | 
-         #cd mdFiles
          rm -rf output
          mkdir output
          for file in $(find . -name "*.md")
          do
-         cat $file >> output/resultData.md
+         cat $file > output/resultData.md
          echo -e "\n" >> output/resultData.md
          done
          ls > output/result.md
