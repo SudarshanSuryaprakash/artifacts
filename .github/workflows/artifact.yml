@@ -35,6 +35,8 @@ jobs:
          name: output
          path: output
   job_2:
+    name: job2
+    needs: job_1
     runs-on: ubuntu-latest
     steps:
     - run: ls
