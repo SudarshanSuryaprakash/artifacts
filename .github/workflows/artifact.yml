@@ -31,11 +31,11 @@ jobs:
       run: |
           pandoc -f markdown -t docx --number-sections --file-scope  output/resultData.md -o docs/resultData.docx
     - run: |
-          git config --global user.email "sudarshan16rms@gmail.com"
-          git config --global user.name "Sudarshan Suryaprakash"
-          git add .
-          git commit -m "Add docx"
-          git push
+            git config --global user.email "sudarshan16rms@gmail.com"
+            git config --global user.name "Sudarshan Suryaprakash"
+            git add .
+            git commit -m "Add docx"
+            git push
          
 #     - name: Upload md artifact
 #       uses: actions/upload-artifact@v2
