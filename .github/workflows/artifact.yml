@@ -17,6 +17,7 @@ jobs:
     - run: 
          | 
          #cd mdFiles
+         rm -rf output
          mkdir output
          for file in $(find . -name "*.md")
          do
