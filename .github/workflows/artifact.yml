@@ -29,6 +29,8 @@ jobs:
     - name: Convert Markdown To docx
       run: |
           pandoc -f markdown -t docx --number-sections --file-scope  output/resultData.md -o docs/resultData.docx
+          ls
+          cd output
           git config --global user.email "sudarshan16rms@gmail.com"
           git config --global user.name "Sudarshan Suryaprakash"
           git add .
