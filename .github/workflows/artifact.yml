@@ -44,6 +44,7 @@ jobs:
     steps:
 
     - uses: actions/checkout@v2
+    - rm-rf docs
     - run: mkdir docs
     - name: Download a single artifact
       uses: actions/download-artifact@v2
