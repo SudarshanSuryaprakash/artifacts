@@ -39,8 +39,9 @@ jobs:
     needs: job_1
     runs-on: ubuntu-latest
     steps:
-    - run: ls
+
     - uses: actions/checkout@v2
+    - run: ls && pwd
     - name: Download a single artifact
       uses: actions/download-artifact@v2
       with:
