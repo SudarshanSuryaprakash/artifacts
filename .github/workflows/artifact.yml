@@ -16,7 +16,8 @@ jobs:
       uses: actions/checkout@v2
     - run: 
          | 
-         cd mdFiles
+         #cd mdFiles
+         mkdir output
          for file in $(find . -name "*.md")
          do
          cat $file >> ../output/resultData.md
@@ -46,13 +47,8 @@ jobs:
       uses: actions/download-artifact@v2
       with:
        name: output
-       path: output
+       path: docs
     - run: |
-          echo "root>" && ls
-          echo "root>" && pwd
-          cd output
-          echo "output>" && ls
-          echo "output>" && pwd
           git config --global user.email "sudarshan16rms@gmail.com"
           git config --global user.name "Sudarshan Suryaprakash"
           git add .
