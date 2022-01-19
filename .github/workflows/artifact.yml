@@ -46,7 +46,7 @@ jobs:
       uses: actions/download-artifact@v2
       with:
        name: output
-       path: docs
+       path: output
     - run: |
           echo "root>" && ls
           echo "root>" && pwd
