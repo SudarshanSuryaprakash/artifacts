@@ -11,12 +11,6 @@ jobs:
       image: docker://pandoc/latex:2.16.2
       options: --entrypoint=sh
     steps:
-#     - run: touch temp.md && echo "hi" > temp.md
-#     - name: upload md artifact
-#       uses: actions/upload-artifact@v2
-#       with:
-#         name: mdArtifact
-#         path: temp.md
     - name: Checkout repo
       uses: actions/checkout@v2
     - run: 
@@ -33,12 +27,16 @@ jobs:
       run: |
           pandoc -f markdown -t docx --number-sections --file-scope  output/result.md -o output/result.docx
           pandoc -f markdown -t docx --number-sections --file-scope  output/resultData.md -o output/resultData.docx
-
+          
     - name: Upload md artifact
       uses: actions/upload-artifact@v2
       with:
          name: output
          path: output
+  job_2:
+    runs-on: ubuntu-latest
+    steps:
+    - run: ls
     - name: pull-request
       uses: repo-sync/pull-request@v2
       with:
