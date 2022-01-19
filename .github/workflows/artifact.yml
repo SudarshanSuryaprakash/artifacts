@@ -22,6 +22,11 @@ jobs:
     - run: 
          | 
          cd mdFiles
+         for file in $(find . -name "*.md")
+         do
+         cat $file >> ../output/resultData.md
+         echo "\n" >> ../output/resultData.md
+         done
          ls > ../output/result.md
          cd ..
     - name: Convert Markdown To docx
