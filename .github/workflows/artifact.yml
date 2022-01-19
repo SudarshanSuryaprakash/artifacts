@@ -20,6 +20,8 @@ jobs:
          mkdir output
          for file in $(find . -name "*.md")
          do
+         echo $file
+         cat $file
          cat $file > output/resultData.md
          echo -e "\n" >> output/resultData.md
          done
@@ -42,7 +44,10 @@ jobs:
     steps:
 
     - uses: actions/checkout@v2
-    - run: mkdir docs
+    - run: rm -rf docs
+    - run: |
+          rm -rf docs
+          mkdir docs
     - name: Download a single artifact
       uses: actions/download-artifact@v2
       with:
@@ -64,3 +69,4 @@ jobs:
       with:
         destination_branch: "main"
         github_token: ${{ secrets.GITHUB_TOKEN }}
+
