@@ -16,5 +16,5 @@ jobs:
 #         path: temp.md
     - name: Checkout repo
       uses: actions/checkout@v2
-    - run: ls
+    - run: touch temp && ls
       
