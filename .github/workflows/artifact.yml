@@ -38,7 +38,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - run: ls
-    - uses: actions/checkout@v2
+#     - uses: actions/checkout@v2
+    - name: Download a single artifact
+      uses: actions/download-artifact@v2
+      with:
+       name: output
     - name: pull-request
       uses: repo-sync/pull-request@v2
       with:
