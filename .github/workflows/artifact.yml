@@ -39,4 +39,9 @@ jobs:
       with:
          name: output
          path: output
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "main"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
       
