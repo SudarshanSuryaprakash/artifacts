@@ -16,60 +16,52 @@ jobs:
       uses: actions/checkout@v2
     - run: 
          | 
-         mkdir docs
          cd mdFiles
          for file in $(find . -name "*.md")
          do
-         #cat $file >> ../output/resultData.md
          cat $file >> ../output/resultData.md
-         #echo -e "\n" >> ../output/resultData.md
-         echo -e "\n========================================" >> ../output/resultData.md
+         echo -e "\n" >> ../output/resultData.md
          done
          ls > ../output/result.md
          cd ..
     - name: Convert Markdown To docx
       run: |
-          pandoc -f markdown -t docx --number-sections --file-scope  output/resultData.md -o docs/resultData.docx
+          pandoc -f markdown -t docx --number-sections --file-scope  output/result.md -o output/result.docx
+          pandoc -f markdown -t docx --number-sections --file-scope  output/resultData.md -o output/resultData.docx
+          
+    - name: Upload md artifact
+      uses: actions/upload-artifact@v2
+      with:
+         name: output
+         path: output
+  job_2:
+    name: job2
+    needs: job_1
+    runs-on: ubuntu-latest
+    steps:
+
+    - uses: actions/checkout@v2
+    - run: ls && pwd && cd output && ls
+    - name: Download a single artifact
+      uses: actions/download-artifact@v2
+      with:
+       name: output
+       path: output
+    - run: |
+          echo "root>" && ls
+          echo "rrot>" && pwd
+          cd output
+          echo "output>" && ls
+          echo "output>" && pwd
           git config --global user.email "sudarshan16rms@gmail.com"
           git config --global user.name "Sudarshan Suryaprakash"
           git add .
-          git commit -m "Add docx"
+          git commit -m "add artifacts to output"
           git push
-         
-#     - name: Upload md artifact
-#       uses: actions/upload-artifact@v2
-#       with:
-#          name: output
-#          path: output
-
-
-#   job_2:
-#     name: job2
-#     needs: job_1
-#     runs-on: ubuntu-latest
-#     steps:
-
-#     - uses: actions/checkout@v2
-#     - run: ls && pwd && cd output && ls
-#     - name: Download a single artifact
-#       uses: actions/download-artifact@v2
-#       with:
-#        name: output
-#        path: output
 #     - run: |
-#           echo "root>" && ls
-#           echo "rrot>" && pwd
-#           cd output
-#           echo "output>" && ls
-#           echo "output>" && pwd
-#           git config --global user.email "sudarshan16rms@gmail.com"
-#           git config --global user.name "Sudarshan Suryaprakash"
-#           git add .
-#           git commit -m "add artifacts to output"
-#           git push
-#     - name: pull-request
-#       uses: repo-sync/pull-request@v2
-#       with:
-#         destination_branch: "main"
-#         github_token: ${{ secrets.GITHUB_TOKEN }}
-      
+#          mv /home/runner/work/artifacts/artifacts/output ./output
+    - name: pull-request
+      uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "main"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
