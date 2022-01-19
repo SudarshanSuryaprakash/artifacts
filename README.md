@@ -1,6 +1,6 @@
 <div align="center">
   
-# test1FERN Web Template (Firestore, Express, React & Node.js)
+# test2FERN Web Template (Firestore, Express, React & Node.js)
 
 A fully featured web template, based on the **Web Pattern**. 
 
