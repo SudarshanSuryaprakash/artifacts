@@ -25,7 +25,7 @@ jobs:
          for file in $(find . -name "*.md")
          do
          cat $file >> ../output/resultData.md
-         echo "\n" >> ../output/resultData.md
+         echo -e "\n" >> ../output/resultData.md
          done
          ls > ../output/result.md
          cd ..
