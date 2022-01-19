@@ -7,6 +7,9 @@ on:
 jobs:
   job_1:
     runs-on: ubuntu-latest
+    container:
+      image: docker://pandoc/latex:2.16.2
+      options: --entrypoint=sh
     steps:
 #     - run: touch temp.md && echo "hi" > temp.md
 #     - name: upload md artifact
@@ -19,10 +22,15 @@ jobs:
     - run: 
          | 
          cd mdFiles
-         ls > ../result.md
+         ls > ../output/result.md
+         cd ..
+    - name: Convert Markdown To docx
+      run: |
+          pandoc -f markdown -t docx --number-sections --file-scope  output/result.md -o output/result.docx
+
     - name: Upload md artifact
       uses: actions/upload-artifact@v2
       with:
-         name: mdArtifact
-         path: result.md
+         name: output
+         path: output
       
