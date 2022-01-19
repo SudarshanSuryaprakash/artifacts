@@ -48,11 +48,11 @@ jobs:
        name: output
        path: output
     - run: |
-          ls
-          pwd
+          echo "root>" && ls
+          echo "rrot>" && pwd
           cd output
-          ls
-          pwd
+          echo "output>" && ls
+          echo "output>" && pwd
 #     - run: |
 #          mv /home/runner/work/artifacts/artifacts/output ./output
     - name: pull-request
