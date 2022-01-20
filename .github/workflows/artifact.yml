@@ -45,36 +45,36 @@ jobs:
 #          name: output
 #          path: output
    
-  job_2:
-    name: job2
-    needs: job_1
-    runs-on: ubuntu-latest
-    steps:
+#   job_2:
+#     name: job2
+#     needs: job_1
+#     runs-on: ubuntu-latest
+#     steps:
 
-    - uses: actions/checkout@v2
-    - run: rm -rf docs
-    - run: |
-          rm -rf docs
-          mkdir docs
-    - name: Download a single artifact
-      uses: actions/download-artifact@v2
-      with:
-       name: output
-       path: docs
-    - run: |
-          git config --global user.email "sudarshan16rms@gmail.com"
-          git config --global user.name "Sudarshan Suryaprakash"
-          git add .
-          git commit -m "add artifacts to output"
-          git push
-    - uses: geekyeggo/delete-artifact@v1
-      with:
-         name: output
+#     - uses: actions/checkout@v2
+#     - run: rm -rf docs
 #     - run: |
-#          mv /home/runner/work/artifacts/artifacts/output ./output
-    - name: pull-request
-      uses: repo-sync/pull-request@v2
-      with:
-        destination_branch: "main"
-        github_token: ${{ secrets.GITHUB_TOKEN }}
+#           rm -rf docs
+#           mkdir docs
+#     - name: Download a single artifact
+#       uses: actions/download-artifact@v2
+#       with:
+#        name: output
+#        path: docs
+#     - run: |
+#           git config --global user.email "sudarshan16rms@gmail.com"
+#           git config --global user.name "Sudarshan Suryaprakash"
+#           git add .
+#           git commit -m "add artifacts to output"
+#           git push
+#     - uses: geekyeggo/delete-artifact@v1
+#       with:
+#          name: output
+# #     - run: |
+# #          mv /home/runner/work/artifacts/artifacts/output ./output
+#     - name: pull-request
+#       uses: repo-sync/pull-request@v2
+#       with:
+#         destination_branch: "main"
+#         github_token: ${{ secrets.GITHUB_TOKEN }}
 
