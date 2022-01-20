@@ -2,7 +2,9 @@ name: Check Artifact
 
 on: 
    push:
-      paths: 'README.md'
+   workflow_dispatch:
+#    push:
+#       paths: 'README.md'
 
   
 jobs:
