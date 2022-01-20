@@ -22,6 +22,7 @@ jobs:
          | 
          rm -rf output
          mkdir output
+         rm -rf docs
          mkdir docs
          for file in $(find . -name "*.md")
          do
