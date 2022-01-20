@@ -36,8 +36,8 @@ jobs:
         
     - name: Push changes
       run: |
-        git config --global user.email "sudarshan16rms@gmail.com"
-        git config --global user.name "Sudarshan Suryaprakash"
+        git config --global user.email "<>"
+        git config --global user.name "Docx Pusher"
         git add .
         git commit -m "Add output"
         git push
