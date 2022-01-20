@@ -8,9 +8,9 @@ on:
 jobs:
   job_1:
     runs-on: ubuntu-latest
-    container:
-      image: docker://pandoc/latex:2.16.2
-      options: --entrypoint=sh
+#     container:
+#       image: docker://pandoc/latex:2.16.2
+#       options: --entrypoint=sh
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
@@ -27,10 +27,12 @@ jobs:
          done
          ls > output/result.md
          
+    - run: sudo apt install pandoc
+    
     - name: Convert Markdown To docx
       run: |
-          pandoc -f markdown -t docx --number-sections --file-scope  output/result.md -o output/result.docx
-          pandoc -f markdown -t docx --number-sections --file-scope  output/resultData.md -o output/resultData.docx
+        pandoc -f markdown -t docx --number-sections --file-scope  output/result.md -o output/result.docx
+        pandoc -f markdown -t docx --number-sections --file-scope  output/resultData.md -o output/resultData.docx
           
     - name: Upload md artifact
       uses: actions/upload-artifact@v2
