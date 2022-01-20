@@ -2,6 +2,8 @@ name: Check Artifact
 
 on: 
    push:
+      branches:
+         "develop"
    workflow_dispatch:
 #    push:
 #       paths: 'README.md'
@@ -39,6 +41,11 @@ jobs:
         git add .
         git commit -m "Add output"
         git push
+        
+    - uses: repo-sync/pull-request@v2
+      with:
+        destination_branch: "main"
+        github_token: ${{ secrets.GITHUB_TOKEN }}
    
 #     - name: Upload md artifact
 #       uses: actions/upload-artifact@v2
