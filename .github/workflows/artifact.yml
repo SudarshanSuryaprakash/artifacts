@@ -22,12 +22,9 @@ jobs:
          mkdir output
          for file in $(find . -name "*.md")
          do
-         echo $file
-         cat $file
-         cat $file > output/resultData.md
+         cat $file >> output/resultData.md
          echo -e "\n" >> output/resultData.md
          done
-         ls > output/result.md
          
     - run: sudo apt install pandoc
     
@@ -35,12 +32,19 @@ jobs:
       run: |
         pandoc -f markdown -t docx --number-sections --file-scope  output/result.md -o output/result.docx
         pandoc -f markdown -t docx --number-sections --file-scope  output/resultData.md -o output/resultData.docx
-          
-    - name: Upload md artifact
-      uses: actions/upload-artifact@v2
-      with:
-         name: output
-         path: output
+        
+    - name: Push changes
+      run: |
+        git add .
+        git commit -m "Add output"
+        git push
+   
+#     - name: Upload md artifact
+#       uses: actions/upload-artifact@v2
+#       with:
+#          name: output
+#          path: output
+   
   job_2:
     name: job2
     needs: job_1
