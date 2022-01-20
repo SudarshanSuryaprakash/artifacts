@@ -30,7 +30,6 @@ jobs:
     
     - name: Convert Markdown To docx
       run: |
-        pandoc -f markdown -t docx --number-sections --file-scope  output/result.md -o output/result.docx
         pandoc -f markdown -t docx --number-sections --file-scope  output/resultData.md -o output/resultData.docx
         
     - name: Push changes
