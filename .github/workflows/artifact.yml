@@ -10,7 +10,7 @@ on:
 
   
 jobs:
-  job_1:
+  Generate_PR_Docx:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout repo
